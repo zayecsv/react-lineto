@@ -7,20 +7,22 @@ module.exports = {
     entry: './demo/index.jsx',
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react', 'react-hmre'],
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                    }
                 }
             },
             {
                 test: /\.jsx?/,
                 exclude: /node_modules|dist/,
                 loader: 'eslint-loader',
-            },
+            }
         ]
     },
 

@@ -9,19 +9,19 @@ var config = {
     entry: './src/index.jsx',
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel-loader',
+                use: 'babel-loader',
                 exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
+                options: {
+                    presets: ['@babel/preset-env']
                 }
             },
             {
                 test: /\.jsx?/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
+                use: 'eslint-loader',
             },
         ]
     },
