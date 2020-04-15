@@ -396,7 +396,14 @@ var Line = exports.Line = function (_PureComponent) {
                 within = _props2$within === undefined ? '' : _props2$within;
 
 
-            this.within = within ? this.findElement(within) : document.getElementById('lines-wrap');
+            var lanesWrapEl = document.getElementById('lines-wrap') || null;
+            if (!document.getElementById('lines-wrap')) {
+                lanesWrapEl = document.createElement('div');
+                lanesWrapEl.id = 'lines-wrap'
+                document.body.append(lanesWrapEl)
+            }
+
+            this.within = within ? this.findElement(within) : lanesWrapEl ? lanesWrapEl : document.body;
 
             var dy = y1 - y0;
             var dx = x1 - x0;
